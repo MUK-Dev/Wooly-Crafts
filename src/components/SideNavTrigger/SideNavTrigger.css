@@ -1,0 +1,41 @@
+:root {
+	--dark-color: #000411;
+	--light-color: #aeb7b3;
+}
+svg.NavTrigger {
+	cursor: pointer;
+}
+#darkGroup {
+	fill: var(--dark-color);
+}
+#lightGroup {
+	fill: var(--light-color);
+}
+#dark3 {
+	opacity: 0;
+}
+#dark1,
+#dark3,
+#light1 {
+	transition: all 1s ease;
+}
+#dark3 {
+	transform: translateX(-100%);
+}
+svg.NavTrigger:hover #light1 {
+	transform: translateX(20%);
+}
+svg.NavTrigger:hover #dark1 {
+	transform: translateX(40%);
+	fill-opacity: 0;
+}
+svg.NavTrigger:hover #dark3 {
+	transform: translateX(0);
+	opacity: 0.69;
+}
+
+@media only screen and (max-width: 600px) {
+	svg.NavTrigger {
+		margin-left: 10px;
+	}
+}

@@ -18,7 +18,7 @@ class Navbar extends Component {
 		return (
 			<div>
 				<nav>
-					<div className="nav-wrapper" style={{ backgroundColor: "#01a7c2" }}>
+					<div className="nav-wrapper" style={{ backgroundColor: "#ff8882" }}>
 						<SideNavTrigger />
 						<Navlogo />
 					</div>
