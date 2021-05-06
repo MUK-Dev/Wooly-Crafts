@@ -1,0 +1,26 @@
+.BigHeading {
+	background-image: repeating-linear-gradient(
+			105deg,
+			transparent 0px,
+			transparent 3px,
+			rgb(255, 255, 255) 3px,
+			rgb(255, 255, 255) 28px
+		),
+		repeating-linear-gradient(
+			333deg,
+			transparent 0px,
+			transparent 3px,
+			rgb(255, 255, 255) 3px,
+			rgb(255, 255, 255) 28px
+		),
+		linear-gradient(
+			90deg,
+			hsla(0, 0%, 27%, 0.171),
+			rgba(71, 71, 71, 0.575),
+			rgba(71, 71, 71, 0.473),
+			rgba(71, 71, 71, 0.233),
+			rgba(71, 71, 71, 0.425),
+			rgba(71, 71, 71, 0.527),
+			rgba(71, 71, 71, 0.493)
+		);
+}

@@ -1,6 +1,6 @@
 :root {
 	--dark-color: #000411;
-	--light-color: #aeb7b3;
+	--light-color: #cec2ff;
 }
 svg.NavTrigger {
 	cursor: pointer;
@@ -17,7 +17,7 @@ svg.NavTrigger {
 #dark1,
 #dark3,
 #light1 {
-	transition: all 1s ease;
+	transition: all 0.7s ease;
 }
 #dark3 {
 	transform: translateX(-100%);
@@ -31,7 +31,7 @@ svg.NavTrigger:hover #dark1 {
 }
 svg.NavTrigger:hover #dark3 {
 	transform: translateX(0);
-	opacity: 0.69;
+	opacity: 1;
 }
 
 @media only screen and (max-width: 600px) {
