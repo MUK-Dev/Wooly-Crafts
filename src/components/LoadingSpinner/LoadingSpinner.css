@@ -1,0 +1,15 @@
+.spinThis {
+	animation: rotation 1.5s infinite ease-in-out;
+	transform-origin: center;
+	transform-box: fill-box;
+}
+
+#loadingSpinner path {
+	fill: #0a2342;
+}
+
+@keyframes rotation {
+	100% {
+		transform: rotateZ(360deg);
+	}
+}

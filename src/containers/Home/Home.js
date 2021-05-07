@@ -10,8 +10,13 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import FourColumnOnLarge from "../../components/FourColumnOnLarge/FourColumnOnLarge";
 import Center from "../../components/Center/Center";
 import IconButton from "../../components/IconButton/IconButton";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 class Home extends Component {
+	state = {
+		showSpinner: false,
+	};
+
 	render() {
 		return (
 			<div>
@@ -37,45 +42,52 @@ class Home extends Component {
 						</TwoColumnsOnLarge>
 					</div>
 				</Row>
-				<SizedBox width="0" height="100px" />
-				<BigHeading>Products Category Name</BigHeading>
-				<Center>
-					<Row>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-					</Row>
-					<IconButton iconType="list">All Products in Category</IconButton>
-				</Center>
-				<SizedBox width="0" height="60px" />
-				<BigHeading>Products Category Name</BigHeading>
-				<Center>
-					<Row>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-						<FourColumnOnLarge>
-							<ProductCard />
-						</FourColumnOnLarge>
-					</Row>
-					<IconButton iconType="list">All Products in Category</IconButton>
-				</Center>
-				<SizedBox width="0" height="60px" />
+				{this.state.showSpinner ? (
+					<LoadingSpinner />
+				) : (
+					<div>
+						<SizedBox width="0" height="100px" />
+						<BigHeading>Products Category Name</BigHeading>
+						<Center>
+							<Row>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+							</Row>
+
+							<IconButton iconType="list">All Products in Category</IconButton>
+						</Center>
+						<SizedBox width="0" height="60px" />
+						<BigHeading>Products Category Name</BigHeading>
+						<Center>
+							<Row>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+								<FourColumnOnLarge>
+									<ProductCard />
+								</FourColumnOnLarge>
+							</Row>
+							<IconButton iconType="list">All Products in Category</IconButton>
+						</Center>
+						<SizedBox width="0" height="60px" />
+					</div>
+				)}
 			</div>
 		);
 	}
