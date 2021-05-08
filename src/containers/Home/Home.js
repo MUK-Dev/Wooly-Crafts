@@ -44,7 +44,10 @@ class Home extends Component {
 					</div>
 				</Row>
 				{this.state.showSpinner ? (
-					<LoadingSpinner />
+					<div>
+						<SizedBox width="0" height="30px" />
+						<LoadingSpinner />
+					</div>
 				) : (
 					<div>
 						<SizedBox width="0" height="100px" />

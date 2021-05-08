@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import M from "materialize-css/dist/js/materialize.min";
 import classes from "./Cart.module.css";
+import CartItems from "../../components/CartItems/CartItems";
 
 export default class Cart extends Component {
 	componentDidMount() {
@@ -28,9 +29,7 @@ export default class Cart extends Component {
 					</a>
 				</div>
 				<ul className="sidenav sidenav-close" id="cart">
-					<li>Cart 1</li>
-					<li>Cart 2</li>
-					<li>Cart 3</li>
+					<CartItems />
 				</ul>
 			</div>
 		);
