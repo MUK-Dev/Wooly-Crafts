@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import M from "materialize-css/dist/js/materialize.min";
-import "./Cart.css";
+import classes from "./Cart.module.css";
 
 export default class Cart extends Component {
 	componentDidMount() {
@@ -17,7 +17,7 @@ export default class Cart extends Component {
 		return (
 			<div>
 				<div className="fixed-action-btn">
-					<div className="CartCounter">0</div>
+					<div className={classes.CartCounter}>0</div>
 					<a
 						href="#"
 						data-target="cart"

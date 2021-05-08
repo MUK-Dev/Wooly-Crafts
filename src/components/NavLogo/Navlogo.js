@@ -1,12 +1,12 @@
 import React from "react";
-import "./Navlogo.css";
+import classes from "./Navlogo.module.css";
 
 const navlogo = (props) => (
 	<svg
 		id="logo"
 		width="220"
 		height="60"
-		className="flex-center"
+		className={["flex-center", classes.Logo].join(" ")}
 		viewBox="0 0 661 120"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

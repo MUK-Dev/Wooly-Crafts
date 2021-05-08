@@ -1,8 +1,10 @@
 import React from "react";
-import "./SuccessBox.css";
+import classes from "./SuccessBox.module.css";
 
 const successBox = (props) => (
-	<div className="waves-effect waves-light btn indigo FadeIn">
+	<div
+		className={["waves-effect", "waves-light", "btn", classes.FadeIn].join(" ")}
+	>
 		{props.children}
 	</div>
 );

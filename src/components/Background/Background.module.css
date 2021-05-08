@@ -1,4 +1,4 @@
-.custom-shape-divider-top-1620281466 {
+.Background {
 	position: absolute;
 	top: 60px;
 	left: 0;
@@ -7,7 +7,7 @@
 	line-height: 0;
 }
 
-.custom-shape-divider-top-1620281466 svg {
+.Background svg {
 	position: relative;
 	display: block;
 	width: calc(140% + 1.3px);
@@ -15,16 +15,16 @@
 	z-index: -1;
 }
 
-.custom-shape-divider-top-1620281466 .shape-fill {
+.Background .shapeFill {
 	fill: #194350;
 }
 
 @media only screen and (max-width: 600px) {
-	.custom-shape-divider-top-1620281466 {
+	.Background {
 		top: 50px;
 	}
 
-	.custom-shape-divider-top-1620281466 svg {
+	.Background svg {
 		width: calc(280% + 1.3px);
 		height: 600px;
 	}

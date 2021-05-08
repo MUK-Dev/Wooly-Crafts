@@ -2,40 +2,40 @@
 	--dark-color: #000411;
 	--light-color: #cec2ff;
 }
-svg.NavTrigger {
+.NavTrigger {
 	cursor: pointer;
 }
-#darkGroup {
+.DarkGroup {
 	fill: var(--dark-color);
 }
-#lightGroup {
+.LightGroup {
 	fill: var(--light-color);
 }
-#dark3 {
+.Dark3 {
 	opacity: 0;
 }
-#dark1,
-#dark3,
-#light1 {
+.Dark1,
+.Dark3,
+.Light1 {
 	transition: all 0.7s ease;
 }
-#dark3 {
+.Dark3 {
 	transform: translateX(-100%);
 }
-svg.NavTrigger:hover #light1 {
+.NavTrigger:hover .Light1 {
 	transform: translateX(20%);
 }
-svg.NavTrigger:hover #dark1 {
+.NavTrigger:hover .Dark1 {
 	transform: translateX(40%);
 	fill-opacity: 0;
 }
-svg.NavTrigger:hover #dark3 {
+.NavTrigger:hover .Dark3 {
 	transform: translateX(0);
 	opacity: 1;
 }
 
 @media only screen and (max-width: 600px) {
-	svg.NavTrigger {
+	.NavTrigger {
 		margin-left: 10px;
 	}
 }

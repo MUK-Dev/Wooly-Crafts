@@ -5,7 +5,7 @@ import Background from "../../components/Background/Background";
 import BigHeading from "../../components/BigHeading/BigHeading";
 import LandingImage from "../../assets/knitting.svg";
 import SizedBox from "../../components/SizedBox/SizedBox";
-import "./Home.css";
+import classes from "./Home.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import FourColumnOnLarge from "../../components/FourColumnOnLarge/FourColumnOnLarge";
 import Center from "../../components/Center/Center";
@@ -18,6 +18,7 @@ class Home extends Component {
 	};
 
 	render() {
+		const landingImageClasses = [classes.Image3D, "hide-on-small-only"];
 		return (
 			<div>
 				<Background />
@@ -37,7 +38,7 @@ class Home extends Component {
 							<img
 								src={LandingImage}
 								alt="Landing"
-								className="image3D hide-on-small-only"
+								className={landingImageClasses.join(" ")}
 							/>
 						</TwoColumnsOnLarge>
 					</div>

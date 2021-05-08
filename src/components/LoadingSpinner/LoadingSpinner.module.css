@@ -1,10 +1,10 @@
-.spinThis {
+.SpinThis {
 	animation: rotation 1.5s infinite ease-in-out;
 	transform-origin: center;
 	transform-box: fill-box;
 }
 
-#loadingSpinner path {
+.LoadingSpinner path {
 	fill: #0a2342;
 }
 

@@ -1,10 +1,13 @@
 import React from "react";
 import sampleImage from "../../assets/wool.svg";
 import Button from "../Button/Button";
-import "./ProductCard.css";
+import classes from "./ProductCard.module.css";
 
 const productCard = (props) => (
-	<div className="card small FadeIn" style={{ backgroundColor: "#eaebed" }}>
+	<div
+		className={["card", "small", classes.FadeIn].join(" ")}
+		style={{ backgroundColor: "#eaebed" }}
+	>
 		<div className="card-image">
 			<img src={sampleImage} alt="Product" />
 		</div>
