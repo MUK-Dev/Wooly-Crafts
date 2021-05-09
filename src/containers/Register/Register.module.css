@@ -1,6 +1,6 @@
-.LoginFormBody {
+.RegisterFormBody {
 	padding: 0 10px 0 10px;
-	height: 80vh;
+	height: 100vh;
 	display: flex;
 	align-items: center;
 	align-content: center;
@@ -8,14 +8,15 @@
 	text-align: center;
 	background-color: #eaebed;
 }
-.LoginFormBody .Card {
+.RegisterFormBody .Card {
 	border-radius: 20px;
 	margin: 0 auto;
 	width: 320px;
 }
-.LoginFormBody img {
+.RegisterFormBody img {
 	margin-top: 10px;
 }
+
 .HeadingBG {
 	border-radius: 20px;
 	background-image: repeating-linear-gradient(

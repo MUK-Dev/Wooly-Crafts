@@ -51,8 +51,10 @@ class Login extends Component {
 		return (
 			<div className={classes.LoginFormBody}>
 				<div className={["card container", classes.Card].join(" ")}>
-					<img src={handshake} alt="HandShake" />
-					<SmallHeading>Login</SmallHeading>
+					<div className={classes.HeadingBG}>
+						<img src={handshake} alt="HandShake" />
+						<SmallHeading>Login</SmallHeading>
+					</div>
 					<form onSubmit={(event) => this.submitHandler(event)}>
 						{formElementArry.map((element) => {
 							return (
