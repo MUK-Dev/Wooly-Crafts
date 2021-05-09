@@ -47,6 +47,7 @@ class Home extends Component {
 					<div>
 						<SizedBox width="0" height="30px" />
 						<LoadingSpinner />
+						<SizedBox width="0" height="30px" />
 					</div>
 				) : (
 					<div>

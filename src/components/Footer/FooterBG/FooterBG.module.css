@@ -1,0 +1,28 @@
+.FooterBG {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	background-color: #194350ec;
+	z-index: -10;
+	transform: rotate(180deg);
+}
+
+.FooterBG svg {
+	position: relative;
+	display: block;
+	width: calc(300% + 1.3px);
+	height: 200px;
+	z-index: -10;
+}
+
+.FooterBG .shapeFill {
+	fill: #194350;
+}
+
+@media only screen and (max-width: 600px) {
+	.FooterBG svg {
+		height: 300px;
+	}
+}

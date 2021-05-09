@@ -4,6 +4,7 @@ import M from "materialize-css/dist/js/materialize.min";
 import Navlogo from "../../components/NavLogo/Navlogo";
 import SideNav from "../../components/SideNav/SideNav";
 import SideNavTrigger from "../../components/SideNavTrigger/SideNavTrigger";
+import NavButtonLarge from "../../components/NavButtonLarge/NavButtonLarge";
 
 class Navbar extends Component {
 	componentDidMount() {
@@ -17,12 +18,22 @@ class Navbar extends Component {
 	render() {
 		return (
 			<div>
-				<nav>
-					<div className="nav-wrapper" style={{ backgroundColor: "#ff8882" }}>
-						<SideNavTrigger />
-						<Navlogo />
-					</div>
-				</nav>
+				<div className="navbar-fixed">
+					<nav>
+						<div className="nav-wrapper" style={{ backgroundColor: "#ff8882" }}>
+							<SideNavTrigger />
+							<Navlogo />
+							<ul className="right hide-on-med-and-down">
+								<li>
+									<NavButtonLarge path="/login">Login</NavButtonLarge>
+								</li>
+								<li>
+									<NavButtonLarge path="/register">Register</NavButtonLarge>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
 				<SideNav />
 			</div>
 		);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../Navbar/Navbar";
 import Cart from "../Cart/Cart";
+import Footer from "../../components/Footer/Footer";
 
 class Layout extends Component {
 	render() {
@@ -9,6 +10,7 @@ class Layout extends Component {
 				<Navbar />
 				<main>{this.props.children}</main>
 				<Cart />
+				<Footer />
 			</div>
 		);
 	}

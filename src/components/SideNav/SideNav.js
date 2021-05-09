@@ -1,22 +1,23 @@
 import React from "react";
 import NavItem from "./NavItem/NavItem";
 import NavButton from "./NavButton/NavButton";
-// import { a } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const sideNav = (props) => (
 	<ul className="sidenav sidenav-close" id="mobile-demo">
-		<NavItem link="/">
+		<NavItem path="/">
 			<p>Home</p>
 		</NavItem>
-		<NavItem link="/writeArticle">
-			<p>New Article</p>
+		<NavItem path="/contact">
+			<p>Contact Us</p>
 		</NavItem>
 		<div className="row center-align">
 			{props.isValid ? (
 				<NavButton>
 					<button
-						className="waves-effect waves-light btn indigo"
+						className="waves-effect waves-light btn"
 						onClick={props.onLogout}
+						style={{ backgroundColor: "#194350" }}
 					>
 						Logout
 					</button>
@@ -24,14 +25,24 @@ const sideNav = (props) => (
 			) : (
 				<div>
 					<NavButton>
-						<a className="waves-effect waves-light btn indigo" to="/login">
+						<NavLink
+							className="waves-effect waves-light btn"
+							to="/login"
+							href
+							style={{ backgroundColor: "#194350" }}
+						>
 							Login
-						</a>
+						</NavLink>
 					</NavButton>
 					<NavButton>
-						<a className="waves-effect waves-light btn indigo" to="/register">
+						<NavLink
+							className="waves-effect waves-light btn"
+							to="/register"
+							href
+							style={{ backgroundColor: "#194350" }}
+						>
 							Register
-						</a>
+						</NavLink>
 					</NavButton>
 				</div>
 			)}

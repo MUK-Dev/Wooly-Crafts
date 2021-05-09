@@ -1,0 +1,22 @@
+.Logo {
+	margin-top: 50px;
+}
+
+.Logo path {
+	stroke-dasharray: 410px;
+	stroke-dashoffset: 405px;
+	stroke: #ff8882;
+	animation: line-anim 5s ease forwards;
+}
+
+@keyframes line-anim {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.Logo {
+		margin-top: 15px;
+	}
+}
