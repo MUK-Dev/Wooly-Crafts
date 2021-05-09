@@ -2,8 +2,8 @@ import React from "react";
 
 const submitButton = (props) => (
 	<button
-		className="waves-effect waves-light btn indigo"
-		style={{ margin: "5px" }}
+		className="waves-effect waves-purple btn"
+		style={{ margin: "5px", backgroundColor: "#194350", marginBottom: "10px" }}
 	>
 		{props.children}
 	</button>

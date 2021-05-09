@@ -1,0 +1,17 @@
+.LoginFormBody {
+	padding: 0 10px 0 10px;
+	height: 80vh;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	margin: auto;
+	text-align: center;
+	background-color: #eaebed;
+}
+.LoginFormBody .Card {
+	margin: 0 auto;
+	width: 320px;
+}
+.LoginFormBody img {
+	margin-top: 10px;
+}
