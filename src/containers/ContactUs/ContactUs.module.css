@@ -1,0 +1,46 @@
+.ContactCardBody {
+	padding: 0 10px 0 10px;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	margin: auto;
+	text-align: center;
+	background-color: #eaebed;
+}
+.ContactCardBody .Card {
+	border-radius: 20px;
+	margin: 0 auto;
+}
+.ContactCardBody img {
+	width: 350px;
+	height: 600px;
+	animation: imageFadeIn 0.5s ease-in forwards;
+}
+.ContactLoader {
+	margin-top: 40%;
+	animation: imageFadeIn 0.5s ease-in forwards;
+}
+
+.ContactCardBody .ContactForm {
+	margin: auto;
+	padding: 10px;
+}
+@media only screen and (max-width: 600px) {
+	.ContactCardBody img {
+		margin-top: 10px;
+		width: 100px;
+		height: 100px;
+	}
+	.ContactLoader {
+		margin-top: 10px;
+	}
+}
+@keyframes imageFadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

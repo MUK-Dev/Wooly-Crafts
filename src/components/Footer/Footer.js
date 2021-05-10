@@ -18,13 +18,11 @@ const footer = () => (
 				</TwoColumnOnLarge>
 				<TwoColumnOnLarge>
 					<div style={{ padding: "22px" }}>
-						<FooterLink>Home</FooterLink>
+						<FooterLink path="/">Home</FooterLink>
 						<br />
-						<FooterLink>Contact Us</FooterLink>
+						<FooterLink path="/contact">Contact Us</FooterLink>
 						<br />
-						<FooterLink>Products</FooterLink>
-						<br />
-						<FooterLink>Categories</FooterLink>
+						<FooterLink path="/collections">Collection</FooterLink>
 						<br />
 					</div>
 				</TwoColumnOnLarge>

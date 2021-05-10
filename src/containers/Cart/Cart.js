@@ -18,7 +18,7 @@ export default class Cart extends Component {
 		return (
 			<div>
 				<div className="fixed-action-btn">
-					<div className={classes.CartCounter}>0</div>
+					<div className={classes.CartCounter}>4</div>
 					<a
 						href="#"
 						data-target="cart"

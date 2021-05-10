@@ -24,7 +24,7 @@ class Home extends Component {
 				<Background />
 				<Row>
 					<TwoColumnsOnLarge>
-						<SizedBox height="140px" width="0" />
+						<SizedBox height="110px" width="0" />
 						<h3
 							className="center-align"
 							style={{ margin: "0", padding: "20px", color: "#eaebed" }}

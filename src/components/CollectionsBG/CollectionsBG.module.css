@@ -1,0 +1,20 @@
+.CollectionsBG {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.CollectionsBG svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 200px;
+	z-index: -10;
+}
+
+.CollectionsBG .ShapeFill {
+	fill: #194350;
+}

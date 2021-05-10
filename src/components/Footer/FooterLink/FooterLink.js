@@ -1,8 +1,11 @@
 import React from "react";
 import classes from "./FooterLink.module.css";
+import { Link } from "react-router-dom";
 
 const footerLink = (props) => (
-	<button className={classes.FooterLink}>{props.children}</button>
+	<Link to={props.path} className={classes.FooterLink}>
+		{props.children}
+	</Link>
 );
 
 export default footerLink;

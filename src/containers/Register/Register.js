@@ -54,11 +54,11 @@ class Register extends Component {
 	};
 
 	inputChangedHandler = (event, inputIdentifier) => {
-		const updatedForm = { ...this.state.loginForm };
+		const updatedForm = { ...this.state.registerForm };
 		const updatedElement = { ...updatedForm[inputIdentifier] };
 		updatedElement.value = event.target.value;
 		updatedForm[inputIdentifier] = updatedElement;
-		this.setState({ loginForm: updatedForm });
+		this.setState({ registerForm: updatedForm });
 	};
 
 	submitHandler = (event) => {
