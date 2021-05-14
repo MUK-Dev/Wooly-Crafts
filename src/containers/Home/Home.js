@@ -68,27 +68,9 @@ class Home extends Component {
 									<ProductCard />
 								</FourColumnOnLarge>
 							</Row>
-
-							<IconButton iconType="list">All Products in Category</IconButton>
-						</Center>
-						<SizedBox width="0" height="60px" />
-						<BigHeading>Products Category Name</BigHeading>
-						<Center>
-							<Row>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-							</Row>
-							<IconButton iconType="list">All Products in Category</IconButton>
+							<IconButton path="/products" iconType="list">
+								All Products
+							</IconButton>
 						</Center>
 						<SizedBox width="0" height="60px" />
 					</div>

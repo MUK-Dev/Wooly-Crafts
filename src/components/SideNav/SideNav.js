@@ -20,8 +20,8 @@ const sideNav = (props) => (
 		<NavItem path="/contact">
 			<p>Contact Us</p>
 		</NavItem>
-		<NavItem path="/collections">
-			<p>Collections</p>
+		<NavItem path="/products">
+			<p>All Products</p>
 		</NavItem>
 		<div className="row center-align">
 			{props.isValid ? (

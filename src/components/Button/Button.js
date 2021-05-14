@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const button = (props) => (
-	<button
+	<Link
+		to={props.path}
 		className="waves-effect waves-light btn"
 		onClick={props.clicked}
 		style={{ backgroundColor: "#194350" }}
 	>
 		{props.children}
-	</button>
+	</Link>
 );
 
 export default button;

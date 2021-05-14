@@ -1,8 +1,8 @@
 import React from "react";
 import CartSummaryItem from "./CartSummaryItem/CartSummaryItem";
-import Button from "../Button/Button";
 import Center from "../../components/Center/Center";
 import classes from "./CartSummary.module.css";
+import RouteButton from "../RouteButton/RouteButton";
 
 const cartSummary = (props) => (
 	<div className={classes.CartSummary}>
@@ -11,7 +11,7 @@ const cartSummary = (props) => (
 		<CartSummaryItem right="Total:" left="Rs 2500" />
 		<hr />
 		<Center>
-			<Button>Checkout</Button>
+			<RouteButton link="/checkout">Checkout</RouteButton>
 		</Center>
 	</div>
 );

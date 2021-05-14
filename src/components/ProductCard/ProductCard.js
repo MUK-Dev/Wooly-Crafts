@@ -15,7 +15,7 @@ const productCard = (props) => (
 			<span className="card-title">Card Title</span>
 		</div>
 		<div className="card-action">
-			<Button>Details</Button>
+			<Button path="/products/product">Details</Button>
 		</div>
 	</div>
 );

@@ -1,0 +1,19 @@
+.Product {
+	width: 100%;
+	min-height: 100vh;
+	padding: 20px;
+}
+.ProductSlides {
+	display: flex;
+	margin: 0 auto;
+	margin-top: 60px;
+	width: 90%;
+}
+
+@media only screen and (max-width: 600px) {
+	.ProductSlides {
+		display: flex;
+		margin: 0 auto;
+		width: 97%;
+	}
+}
