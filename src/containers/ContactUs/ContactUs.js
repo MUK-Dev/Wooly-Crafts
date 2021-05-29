@@ -8,6 +8,7 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import Input from "../../components/Input/Input";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import axios from "../../axios";
+import { connect } from "react-redux";
 
 class ContactUs extends Component {
 	state = {
@@ -57,7 +58,21 @@ class ContactUs extends Component {
 		responseMessage: null,
 	};
 
+	componentDidMount() {
+		if (this.props.isUserLoggedIn) {
+			const newForm = { ...this.state.contactForm };
+			newForm.email.value = this.props.user.email;
+			newForm.email.label = "";
+			newForm.name.value = this.props.user.name;
+			newForm.name.label = "";
+			newForm.phone.value = this.props.user.phone;
+			newForm.phone.label = "";
+			this.setState({ contactForm: newForm });
+		}
+	}
+
 	inputChangedHandler = (event, inputIdentifier) => {
+		this.setState({ responseMessage: null });
 		const updatedForm = { ...this.state.contactForm };
 		const updatedElement = { ...updatedForm[inputIdentifier] };
 		updatedElement.value = event.target.value;
@@ -164,4 +179,11 @@ class ContactUs extends Component {
 	}
 }
 
-export default ContactUs;
+const mapStateToProps = (state) => {
+	return {
+		isUserLoggedIn: state.user.validated,
+		user: state.user.currentUser,
+	};
+};
+
+export default connect(mapStateToProps)(ContactUs);

@@ -7,6 +7,7 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import axios from "../../axios";
 import { connect } from "react-redux";
 import * as actionTypes from "../../reducers/actions";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 class Register extends Component {
 	state = {
@@ -89,13 +90,14 @@ class Register extends Component {
 					axios
 						.post("/register", credentials)
 						.then((res) => {
-							console.log(res);
 							this.setState({
 								responseMessage: res.data.message,
 								showSpinner: false,
 							});
 							this.props.storeUser(res.data.userInfo, res.data.token);
-							this.props.history.goBack();
+							setTimeout(() => {
+								this.props.history.goBack();
+							}, 1000);
 						})
 						.catch((err) => {
 							console.log(err);
@@ -107,7 +109,10 @@ class Register extends Component {
 				}
 			}
 		} else {
-			this.setState({ responseMessage: "Passwords Don't Match" });
+			this.setState({
+				responseMessage: "Passwords Don't Match",
+				showSpinner: false,
+			});
 		}
 	};
 
@@ -123,7 +128,12 @@ class Register extends Component {
 			<div className={classes.RegisterFormBody}>
 				<div className={["card container", classes.Card].join(" ")}>
 					<div className={classes.HeadingBG}>
-						<img src={handshake} alt="HandShake" />
+						{this.state.showSpinner ? (
+							<LoadingSpinner />
+						) : (
+							<img src={handshake} alt="HandShake" />
+						)}
+
 						<SmallHeading>Register</SmallHeading>
 					</div>
 					<form onSubmit={(event) => this.submitHandler(event)}>

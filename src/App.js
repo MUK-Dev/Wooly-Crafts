@@ -16,8 +16,19 @@ class App extends Component {
 		const token = localStorage.getItem("token");
 		const userData = JSON.parse(localStorage.getItem("userData"));
 		const expiration = localStorage.getItem("expiration");
+		const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+		const totalPrice = parseInt(localStorage.getItem("totalPrice"));
 		if (token && userData && new Date(expiration) > new Date()) {
 			this.props.getUser(userData, token);
+		}
+		if (
+			token &&
+			userData &&
+			new Date(expiration) > new Date() &&
+			cartItems &&
+			totalPrice
+		) {
+			this.props.getCart(cartItems, totalPrice);
 		}
 	}
 
@@ -45,6 +56,8 @@ const mapDispatchToProps = (dispatch) => {
 				type: actionTypes.GET_TOKEN,
 				user: user,
 			}),
+		getCart: (cart, price) =>
+			dispatch({ type: actionTypes.GET_CART, cartItems: cart, price: price }),
 	};
 };
 

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 const cartItems = (props) => (
 	<div>
+		{console.log(props.cartItems.length)}
 		{props.cartItems.length > 0 ? (
 			<div>
 				{props.cartItems.map((cartItem) => {

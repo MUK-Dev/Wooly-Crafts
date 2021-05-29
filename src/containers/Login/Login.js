@@ -7,6 +7,7 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import axios from "../../axios";
 import { connect } from "react-redux";
 import * as actionTypes from "../../reducers/actions";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 class Login extends Component {
 	state = {
@@ -61,7 +62,9 @@ class Login extends Component {
 						showSpinner: false,
 					});
 					this.props.storeUser(res.data.userInfo, res.data.token);
-					this.props.history.goBack();
+					setTimeout(() => {
+						this.props.history.goBack();
+					}, 1000);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -85,7 +88,12 @@ class Login extends Component {
 			<div className={classes.LoginFormBody}>
 				<div className={["card container", classes.Card].join(" ")}>
 					<div className={classes.HeadingBG}>
-						<img src={handshake} alt="HandShake" />
+						{this.state.showSpinner ? (
+							<LoadingSpinner />
+						) : (
+							<img src={handshake} alt="HandShake" />
+						)}
+
 						<SmallHeading>Login</SmallHeading>
 					</div>
 					<form onSubmit={(event) => this.submitHandler(event)}>
