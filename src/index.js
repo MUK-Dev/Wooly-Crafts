@@ -5,13 +5,29 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "materialize-css/dist/css/materialize.min.css";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+import userReducer from "./reducers/user";
+import cartReducer from "./reducers/cart";
+
+const reducer = combineReducers({
+	cart: cartReducer,
+	user: userReducer,
+});
+
+const store = createStore(
+	reducer,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
-	</React.StrictMode>,
+	<Provider store={store}>
+		<React.StrictMode>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</React.StrictMode>
+	</Provider>,
 	document.getElementById("root")
 );
 

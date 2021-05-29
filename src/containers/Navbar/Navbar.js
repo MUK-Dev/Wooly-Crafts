@@ -5,6 +5,8 @@ import Navlogo from "../../components/NavLogo/Navlogo";
 import SideNav from "../../components/SideNav/SideNav";
 import SideNavTrigger from "../../components/SideNavTrigger/SideNavTrigger";
 import NavButtonLarge from "../../components/NavButtonLarge/NavButtonLarge";
+import { connect } from "react-redux";
+import * as actionTypes from "../../reducers/actions";
 
 class Navbar extends Component {
 	componentDidMount() {
@@ -24,12 +26,30 @@ class Navbar extends Component {
 							<SideNavTrigger />
 							<Navlogo />
 							<ul className="right hide-on-med-and-down">
-								<li>
-									<NavButtonLarge path="/login">Login</NavButtonLarge>
-								</li>
-								<li>
-									<NavButtonLarge path="/register">Register</NavButtonLarge>
-								</li>
+								{this.props.isUserLoggedIn ? (
+									<li>
+										<button
+											className="waves-effect waves-purple btn"
+											style={{
+												backgroundColor: "#194350",
+												color: "#eaebed",
+												marginRight: "40px",
+											}}
+											onClick={this.props.logout}
+										>
+											<b>Logout</b>
+										</button>
+									</li>
+								) : (
+									<div>
+										<li>
+											<NavButtonLarge path="/login">Login</NavButtonLarge>
+										</li>
+										<li>
+											<NavButtonLarge path="/register">Register</NavButtonLarge>
+										</li>
+									</div>
+								)}
 							</ul>
 						</div>
 					</nav>
@@ -40,4 +60,16 @@ class Navbar extends Component {
 	}
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+	return {
+		isUserLoggedIn: state.user.validated,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		logout: () => dispatch({ type: actionTypes.LOGOUT }),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

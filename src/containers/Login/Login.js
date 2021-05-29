@@ -4,6 +4,9 @@ import SmallHeading from "../../components/SmallHeading/SmallHeading";
 import handshake from "../../assets/handshake.svg";
 import Input from "../../components/Input/Input";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
+import axios from "../../axios";
+import { connect } from "react-redux";
+import * as actionTypes from "../../reducers/actions";
 
 class Login extends Component {
 	state = {
@@ -26,9 +29,13 @@ class Login extends Component {
 			},
 		},
 		showSpinner: false,
+		responseMessage: "",
 	};
 
 	inputChangedHandler = (event, inputIdentifier) => {
+		if (this.state.responseMessage !== "") {
+			this.setState({ responseMessage: "" });
+		}
 		const updatedForm = { ...this.state.loginForm };
 		const updatedElement = { ...updatedForm[inputIdentifier] };
 		updatedElement.value = event.target.value;
@@ -38,6 +45,32 @@ class Login extends Component {
 
 	submitHandler = (event) => {
 		event.preventDefault();
+		this.setState({ showSpinner: true });
+		const email = this.state.loginForm.email.value;
+		const password = this.state.loginForm.password.value;
+		if (email !== "" && password !== "") {
+			const credentials = {
+				email: email,
+				password: password,
+			};
+			axios
+				.post("/login", credentials)
+				.then((res) => {
+					this.setState({
+						responseMessage: res.data.message,
+						showSpinner: false,
+					});
+					this.props.storeUser(res.data.userInfo, res.data.token);
+					this.props.history.goBack();
+				})
+				.catch((err) => {
+					console.log(err);
+					this.setState({
+						responseMessage: "Couldn't Login...",
+						showSpinner: false,
+					});
+				});
+		}
 	};
 
 	render() {
@@ -70,7 +103,11 @@ class Login extends Component {
 								/>
 							);
 						})}
-						<SubmitButton>Submit</SubmitButton>
+						{this.state.responseMessage ? (
+							<SmallHeading>{this.state.responseMessage}</SmallHeading>
+						) : (
+							<SubmitButton>Submit</SubmitButton>
+						)}
 					</form>
 				</div>
 			</div>
@@ -78,4 +115,11 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		storeUser: (user, token) =>
+			dispatch({ type: actionTypes.GET_USER, user: user, token: token }),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(Login);

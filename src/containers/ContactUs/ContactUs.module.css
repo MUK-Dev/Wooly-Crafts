@@ -1,6 +1,6 @@
 .ContactCardBody {
-	padding: 0 10px 0 10px;
-	height: 110vh;
+	padding: 10px 10px 10px 10px;
+	min-height: 110vh;
 	display: flex;
 	align-items: center;
 	align-content: center;

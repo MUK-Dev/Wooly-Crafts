@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import M from "materialize-css/dist/js/materialize.min";
 import classes from "./Cart.module.css";
 import CartItems from "../../components/CartItems/CartItems";
+import { connect } from "react-redux";
 
-export default class Cart extends Component {
+class Cart extends Component {
 	componentDidMount() {
 		document.addEventListener("DOMContentLoaded", function () {
 			var elems = document.querySelectorAll("#cart");
@@ -18,7 +19,7 @@ export default class Cart extends Component {
 		return (
 			<div>
 				<div className="fixed-action-btn">
-					<div className={classes.CartCounter}>4</div>
+					<div className={classes.CartCounter}>{this.props.totalItems}</div>
 					<a
 						href="#"
 						data-target="cart"
@@ -35,3 +36,11 @@ export default class Cart extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		totalItems: state.cart.cartItems.length,
+	};
+};
+
+export default connect(mapStateToProps)(Cart);

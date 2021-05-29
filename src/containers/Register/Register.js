@@ -4,6 +4,9 @@ import SmallHeading from "../../components/SmallHeading/SmallHeading";
 import handshake from "../../assets/handshake.svg";
 import Input from "../../components/Input/Input";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
+import axios from "../../axios";
+import { connect } from "react-redux";
+import * as actionTypes from "../../reducers/actions";
 
 class Register extends Component {
 	state = {
@@ -51,9 +54,13 @@ class Register extends Component {
 		},
 		showSpinner: false,
 		showSuccessBox: false,
+		responseMessage: "",
 	};
 
 	inputChangedHandler = (event, inputIdentifier) => {
+		if (this.state.responseMessage !== "") {
+			this.setState({ responseMessage: "" });
+		}
 		const updatedForm = { ...this.state.registerForm };
 		const updatedElement = { ...updatedForm[inputIdentifier] };
 		updatedElement.value = event.target.value;
@@ -63,6 +70,45 @@ class Register extends Component {
 
 	submitHandler = (event) => {
 		event.preventDefault();
+		this.setState({ showSpinner: true });
+		const name = this.state.registerForm.name.value;
+		const phone = this.state.registerForm.phone.value;
+		const email = this.state.registerForm.email.value;
+		const password = this.state.registerForm.password.value;
+		const confirmPassword = this.state.registerForm.confirmPassword.value;
+
+		if (password === confirmPassword) {
+			if (password !== "" && confirmPassword !== "") {
+				if (name !== "" && phone !== "" && email !== "") {
+					const credentials = {
+						name: name,
+						email: email,
+						phone: phone,
+						password: password,
+					};
+					axios
+						.post("/register", credentials)
+						.then((res) => {
+							console.log(res);
+							this.setState({
+								responseMessage: res.data.message,
+								showSpinner: false,
+							});
+							this.props.storeUser(res.data.userInfo, res.data.token);
+							this.props.history.goBack();
+						})
+						.catch((err) => {
+							console.log(err);
+							this.setState({
+								responseMessage: "Something Went Wrong...",
+								showSpinner: false,
+							});
+						});
+				}
+			}
+		} else {
+			this.setState({ responseMessage: "Passwords Don't Match" });
+		}
 	};
 
 	render() {
@@ -95,7 +141,11 @@ class Register extends Component {
 								/>
 							);
 						})}
-						<SubmitButton>Submit</SubmitButton>
+						{this.state.responseMessage ? (
+							<SmallHeading>{this.state.responseMessage}</SmallHeading>
+						) : (
+							<SubmitButton>Submit</SubmitButton>
+						)}
 					</form>
 				</div>
 			</div>
@@ -103,4 +153,11 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		storeUser: (user, token) =>
+			dispatch({ type: actionTypes.GET_USER, user: user, token: token }),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(Register);

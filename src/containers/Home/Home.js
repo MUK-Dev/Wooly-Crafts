@@ -7,20 +7,38 @@ import LandingImage from "../../assets/knitting.svg";
 import SizedBox from "../../components/SizedBox/SizedBox";
 import classes from "./Home.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import FourColumnOnLarge from "../../components/FourColumnOnLarge/FourColumnOnLarge";
+import TwoColumnOnSmall from "../../components/TwoColumnOnSmall/TwoColumnOnSmall";
 import Center from "../../components/Center/Center";
 import IconButton from "../../components/IconButton/IconButton";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import axios from "../../axios";
 
 class Home extends Component {
 	state = {
+		products: [],
+		responseError: null,
 		showSpinner: false,
 	};
 
+	componentDidMount() {
+		this.setState({ showSpinner: true });
+		axios
+			.get("/products")
+			.then((res) => {
+				this.setState({ showSpinner: false, products: res.data });
+			})
+			.catch((err) => {
+				console.log(err);
+				this.setState({
+					showSpinner: false,
+					responseError: "Something Went Wrong...",
+				});
+			});
+	}
+
 	render() {
-		const landingImageClasses = [classes.Image3D, "hide-on-small-only"];
 		return (
-			<div>
+			<div className={classes.Home}>
 				<Background />
 				<Row>
 					<TwoColumnsOnLarge>
@@ -38,7 +56,7 @@ class Home extends Component {
 							<img
 								src={LandingImage}
 								alt="Landing"
-								className={landingImageClasses.join(" ")}
+								className={[classes.Image3D, "hide-on-small-only"].join(" ")}
 							/>
 						</TwoColumnsOnLarge>
 					</div>
@@ -49,24 +67,35 @@ class Home extends Component {
 						<LoadingSpinner />
 						<SizedBox width="0" height="30px" />
 					</div>
+				) : this.state.responseError ? (
+					<div>
+						<SizedBox width="0" height="80px" />
+						<BigHeading>{this.state.responseError}</BigHeading>
+					</div>
 				) : (
 					<div>
 						<SizedBox width="0" height="100px" />
-						<BigHeading>Products Category Name</BigHeading>
+						<BigHeading>Latest Releases</BigHeading>
 						<Center>
 							<Row>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
-								<FourColumnOnLarge>
-									<ProductCard />
-								</FourColumnOnLarge>
+								{this.state.products
+									.reverse()
+									.splice(0, 4)
+									.map((product) => {
+										return (
+											<div key={product._id}>
+												<TwoColumnOnSmall>
+													<ProductCard
+														productId={product._id}
+														title={product.name}
+														price={product.price}
+														sold={product.soldOut}
+														image={product.images[0]}
+													/>
+												</TwoColumnOnSmall>
+											</div>
+										);
+									})}
 							</Row>
 							<IconButton path="/products" iconType="list">
 								All Products

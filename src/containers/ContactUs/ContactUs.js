@@ -7,6 +7,7 @@ import SmallHeading from "../../components/SmallHeading/SmallHeading";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import Input from "../../components/Input/Input";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import axios from "../../axios";
 
 class ContactUs extends Component {
 	state = {
@@ -53,6 +54,7 @@ class ContactUs extends Component {
 			},
 		},
 		showSpinner: false,
+		responseMessage: null,
 	};
 
 	inputChangedHandler = (event, inputIdentifier) => {
@@ -65,6 +67,47 @@ class ContactUs extends Component {
 
 	submitHandler = (event) => {
 		event.preventDefault();
+		this.setState({ showSpinner: true });
+		const topic = this.state.contactForm.subject.value;
+		const name = this.state.contactForm.name.value;
+		const email = this.state.contactForm.email.value;
+		const phone = this.state.contactForm.phone.value;
+		const messageBody = this.state.contactForm.message.value;
+		if (
+			topic !== "" &&
+			name !== "" &&
+			email !== "" &&
+			phone !== "" &&
+			messageBody !== ""
+		) {
+			const message = {
+				topic: topic,
+				name: name,
+				email: email,
+				phone: phone,
+				message: messageBody,
+			};
+			axios
+				.post("/messages", message)
+				.then((res) => {
+					const newContactForm = { ...this.state.contactForm };
+					for (let key in newContactForm) {
+						newContactForm[key].value = "";
+					}
+					this.setState({
+						responseMessage: res.data,
+						showSpinner: false,
+						contactForm: newContactForm,
+					});
+				})
+				.catch((err) => {
+					console.log(err);
+					this.setState({
+						responseMessage: "Something Went Wrong",
+						showSpinner: false,
+					});
+				});
+		}
 	};
 
 	render() {
@@ -106,7 +149,11 @@ class ContactUs extends Component {
 											/>
 										);
 									})}
-									<SubmitButton>Submit</SubmitButton>
+									{this.state.responseMessage ? (
+										<SmallHeading>{this.state.responseMessage}</SmallHeading>
+									) : (
+										<SubmitButton>Submit</SubmitButton>
+									)}
 								</form>
 							</div>
 						</TwoColumnOnLarge>

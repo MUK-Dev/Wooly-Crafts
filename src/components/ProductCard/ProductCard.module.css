@@ -2,6 +2,12 @@
 	animation: cardFadeIn 1s ease forwards;
 }
 
+.Image {
+	object-fit: cover;
+	width: 50px;
+	height: 200px;
+}
+
 @keyframes cardFadeIn {
 	from {
 		opacity: 0;

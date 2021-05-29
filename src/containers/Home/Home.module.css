@@ -1,3 +1,7 @@
+.Home {
+	min-height: 95vh;
+}
+
 .Image3D {
 	transform-style: preserve-3d;
 	-webkit-filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.6));

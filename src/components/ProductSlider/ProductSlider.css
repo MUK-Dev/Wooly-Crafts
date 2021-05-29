@@ -12,6 +12,7 @@
 }
 
 #featured {
+	margin-top: 20px;
 	max-width: 95%;
 	max-height: 500px;
 	object-fit: cover;
