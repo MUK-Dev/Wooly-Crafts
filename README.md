@@ -1,5 +1,21 @@
 # Getting Started with Create React App
 
+[Video Demo Of The Project](https://www.youtube.com/watch?v=SFy9TtDC6Aw)
+
+## Pages:
+- Home
+- Contact Us
+- All Products
+- Login
+- Register
+- SingleProduct
+- Side Drawer
+- Cart
+- Checkout
+
+### `State Management Done With Redux`
+### `For Http Request axios is used`
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
